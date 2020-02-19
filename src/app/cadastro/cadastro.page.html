@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Cadastro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <ion-item>
+      <ion-label position="floating">Nome</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">E-mail</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Sexo</ion-label>
+      <ion-select placeholder="Selecionar">
+        <ion-select-option value="f">Female</ion-select-option>
+        <ion-select-option value="m">Male</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nascimento</ion-label>
+      <ion-datetime value="..." min="1900" max="2020" [dayShortNames]="customDayShortNames" displayFormat="DD/MM/YYYY"
+        monthShortNames="jan, feb, mar, abr, mai, jun, jul, ago, set, out, nov, dez">
+      </ion-datetime>
+    </ion-item>
+    <div class="btn" [routerLink]="['../home']">
+      <ion-icon slot="icon-only" class="iconSize" name="arrow-forward-outline"></ion-icon>
+    </div>
+  </div>
+</ion-content>
