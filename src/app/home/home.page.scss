@@ -9,3 +9,93 @@
   background-color: transparent;
   font-size: 38px;
 }
+
+ion-progress-bar {
+  --progress-background: #FF9F00;
+  --buffer-background: #ffffff;
+  height: 20px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.tempo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #1C2856;
+  width: 50%;
+  margin-bottom: 20px;
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+
+  &-icon {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+
+    img {
+      width: 70%;
+    }
+  }
+
+  &-tempo {
+    color: #ffffff;
+    font-size: 20pt;
+    padding-left: 10px;
+  }
+}
+
+.pontos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #1C2856;
+  width: 50%;
+  border-radius: 25px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+
+  &-icon {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+
+    img {
+      width: 70%;
+    }
+  }
+
+  &-valor {
+    color: #ffffff;
+    font-size: 20pt;
+    padding-left: 10px;
+  }
+}
+
+.trofeu {
+  width: 35%;
+}
