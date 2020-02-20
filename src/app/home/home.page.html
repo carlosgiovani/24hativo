@@ -5,17 +5,55 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-label>Meta alcançada em</ion-label>
-  <!-- <ion-item>
-    <ion-label>MMMM</ion-label>
-    <ion-datetime displayFormat="MMMM" value="2012-12-15T13:47:20.789"></ion-datetime>
-  </ion-item> -->
-  <select class="select-mes">
-    <option>Large 01</option>
-    <option>Large 02</option>
-    <option>Large 03</option>
-    <option>Large 04</option>
-    <option>Large 05</option>
-    <option>Large 06</option>
-  </select>
+  <ion-item>
+    <ion-progress-bar color="secondary" value="0.5"></ion-progress-bar>
+  </ion-item>
+  <ion-text>
+    <div>Meta alcançada em</div>
+  </ion-text>
+  <div>
+    <select class="select-mes">
+      <option>Janeiro</option>
+      <option>Fevereiro</option>
+      <option>Março</option>
+      <option>Abril</option>
+      <option>Maio</option>
+      <option>Junho</option>
+    </select>
+  </div>
+  <div>
+    <ion-label>Semana 01</ion-label>
+    <ion-card>
+      <ion-card-content>
+        <div>
+          <div class="tempo">
+            <div class="tempo-icon">
+              <img src="../../assets/images/relogio.svg">
+            </div>
+            <div class="tempo-tempo">
+              00:00
+            </div>
+          </div>
+          <div class="pontos">
+            <div class="pontos-icon">
+              <img src="../../assets/images/estrela.svg">
+            </div>
+            <div class="pontos-valor">
+              0000
+            </div>
+          </div>
+        </div>
+        <div>
+          <img class="trofeu" src="../../assets/images/trofeu.svg">
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div>
+    <ion-label>Semana 02</ion-label>
+    <ion-card>
+      <ion-card-content>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
