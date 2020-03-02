@@ -8,10 +8,12 @@
   <ion-item>
     <ion-progress-bar color="secondary" value="0.5"></ion-progress-bar>
   </ion-item>
-  <ion-text>
-    <div>Meta alcançada em</div>
-  </ion-text>
-  <div>
+  <ion-row>
+    <ion-text>
+      Meta alcançada em
+    </ion-text>
+  </ion-row>
+  <ion-row>
     <select class="select-mes">
       <option>Janeiro</option>
       <option>Fevereiro</option>
@@ -20,40 +22,33 @@
       <option>Maio</option>
       <option>Junho</option>
     </select>
-  </div>
-  <div>
-    <ion-label>Semana 01</ion-label>
-    <ion-card>
-      <ion-card-content>
-        <div>
-          <div class="tempo">
-            <div class="tempo-icon">
-              <img src="../../assets/images/relogio.svg">
-            </div>
-            <div class="tempo-tempo">
-              00:00
-            </div>
+  </ion-row>
+  <ion-row>
+    <ion-text>Semana 01</ion-text>
+  </ion-row>
+  <ion-row class="card-info">
+    <ion-row class="d-flex">
+      <div class="dados">
+        <div class="tempo">
+          <div class="tempo-icon">
+            <img src="../../assets/images/relogio.svg">
           </div>
-          <div class="pontos">
-            <div class="pontos-icon">
-              <img src="../../assets/images/estrela.svg">
-            </div>
-            <div class="pontos-valor">
-              0000
-            </div>
+          <div class="tempo-tempo">
+            00:00
           </div>
         </div>
-        <div>
-          <img class="trofeu" src="../../assets/images/trofeu.svg">
+        <div class="pontos">
+          <div class="pontos-icon">
+            <img src="../../assets/images/estrela.svg">
+          </div>
+          <div class="pontos-valor">
+            0000
+          </div>
         </div>
-      </ion-card-content>
-    </ion-card>
-  </div>
-  <div>
-    <ion-label>Semana 02</ion-label>
-    <ion-card>
-      <ion-card-content>
-      </ion-card-content>
-    </ion-card>
-  </div>
+      </div>
+      <div class="trofeu">
+        <img src="../../assets/images/trofeu.svg">
+      </div>
+    </ion-row>
+  </ion-row>
 </ion-content>
