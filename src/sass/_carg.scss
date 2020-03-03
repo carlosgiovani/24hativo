@@ -3,95 +3,187 @@
     box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
     border-radius: 4px;
     padding: 10px;
+    
 }
 .d-flex{
     display: flex;
 }
-.dados{
-    width: 62%;
+.w-100{
+  width: 100%;
 }
-.tempo {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: #1C2856;
-    // width: 50%;
-    margin-bottom: 20px;
-    border-radius: 25px;
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    -ms-border-radius: 25px;
-    -o-border-radius: 25px;
-  
-    &-icon {
-      background-color: #ffffff;
+.week{
+  &-start{
+    .dados{
+      width: 60%;
+  }
+  .tempo {
       display: flex;
-      justify-content: center;
+      flex-direction: row;
       align-items: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      -webkit-border-radius: 50%;
-      -moz-border-radius: 50%;
-      -ms-border-radius: 50%;
-      -o-border-radius: 50%;
-  
-      img {
-        width: 60%;
+      background-color: #1C2856;
+      // width: 50%;
+      margin-bottom: 20px;
+      border-radius: 25px;
+      -webkit-border-radius: 25px;
+      -moz-border-radius: 25px;
+      -ms-border-radius: 25px;
+      -o-border-radius: 25px;
+    
+      &-icon {
+        background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+    
+        img {
+          width: 60%;
+        }
+      }
+    
+      &-tempo {
+        color: #ffffff;
+        font-size: 20pt;
+        padding-left: 10px;
       }
     }
-  
-    &-tempo {
-      color: #ffffff;
-      font-size: 20pt;
-      padding-left: 10px;
-    }
-  }
-  
-  .pontos {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: #1C2856;
-    // width: 50%;
-    border-radius: 25px;
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    -ms-border-radius: 25px;
-    -o-border-radius: 25px;
-  
-    &-icon {
-      background-color: #ffffff;
+    
+    .pontos {
       display: flex;
-      justify-content: center;
+      flex-direction: row;
       align-items: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      -webkit-border-radius: 50%;
-      -moz-border-radius: 50%;
-      -ms-border-radius: 50%;
-      -o-border-radius: 50%;
-  
-      img {
-        width: 60%;
+      background-color: #1C2856;
+      // width: 50%;
+      border-radius: 25px;
+      -webkit-border-radius: 25px;
+      -moz-border-radius: 25px;
+      -ms-border-radius: 25px;
+      -o-border-radius: 25px;
+    
+      &-icon {
+        background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+    
+        img {
+          width: 60%;
+        }
+      }
+    
+      &-valor {
+        color: #ffffff;
+        font-size: 20pt;
+        padding-left: 10px;
       }
     }
-  
-    &-valor {
-      color: #ffffff;
-      font-size: 20pt;
-      padding-left: 10px;
+    
+    .icon-card {
+      width: 40%;
+      height: 100px;
+      text-align: right;
+      position: relative;
+      top: -36px;
+      right: -63px;
+      background: url('./assets/images/trofeu.svg') 0 0/100% 100% no-repeat;
     }
   }
-  
-  .trofeu {
-    width: 37%;
-    text-align: right;
-    position: relative;
-    top: -36px;
-    right: -75px;
-    img{
-        width: 80%;
+  &-stop{
+    .dados{
+      width: 60%;
+  }
+  .tempo {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background-color: #b4b4b4;
+      // width: 50%;
+      margin-bottom: 20px;
+      border-radius: 25px;
+      -webkit-border-radius: 25px;
+      -moz-border-radius: 25px;
+      -ms-border-radius: 25px;
+      -o-border-radius: 25px;
+    
+      &-icon {
+        background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+    
+        img {
+          width: 60%;
+        }
+      }
+    
+      &-tempo {
+        color: #ffffff;
+        font-size: 20pt;
+        padding-left: 10px;
+      }
+    }
+    
+    .pontos {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background-color: #b4b4b4;
+      // width: 50%;
+      border-radius: 25px;
+      -webkit-border-radius: 25px;
+      -moz-border-radius: 25px;
+      -ms-border-radius: 25px;
+      -o-border-radius: 25px;
+    
+      &-icon {
+        background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+    
+        img {
+          width: 60%;
+        }
+      }
+    
+      &-valor {
+        color: #ffffff;
+        font-size: 20pt;
+        padding-left: 10px;
+      }
+    }
+    
+    .icon-card {
+      width: 40%;
+      height: 100px;
+      background: url('./assets/images/trofeu.svg') 100% 100% no-repeat;
     }
   }
+}
