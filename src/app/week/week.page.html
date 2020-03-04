@@ -1,32 +1,17 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Home</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title>week</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-row class="ion-margin-bottom">
-    <ion-progress-bar color="secondary" value="0.5"></ion-progress-bar>
-  </ion-row>
-  <ion-row>
-    <ion-text>
-      Meta alcançada em
-    </ion-text>
-  </ion-row>
-  <ion-row>
-    <select class="select-mes">
-      <option>Janeiro</option>
-      <option>Fevereiro</option>
-      <option>Março</option>
-      <option>Abril</option>
-      <option>Maio</option>
-      <option>Junho</option>
-    </select>
-  </ion-row>
-  <ion-row class="ion-margin-bottom">
-    <ion-col class="week-finished" [routerLink]="['../week']">
+    <ion-col class="day-finished" [routerLink]="['../week']">
       <ion-row>
-        <ion-text>Semana 01</ion-text>
+        <ion-text>Segunda</ion-text>
       </ion-row>
       <ion-row class="card-info">
         <ion-row class="d-flex w-100">
@@ -54,9 +39,9 @@
     </ion-col>
   </ion-row>
   <ion-row class="ion-margin-bottom">
-    <ion-col class="week-closed">
+    <ion-col class="day-closed">
       <ion-row>
-        <ion-text>Semana 02</ion-text>
+        <ion-text>Terça</ion-text>
       </ion-row>
       <ion-row class="card-info">
         <ion-row class="d-flex w-100">
@@ -78,9 +63,9 @@
     </ion-col>
   </ion-row>
   <ion-row class="ion-margin-bottom">
-    <ion-col class="week-closed">
+    <ion-col class="day-closed">
       <ion-row>
-        <ion-text>Semana 03</ion-text>
+        <ion-text>Quarta</ion-text>
       </ion-row>
       <ion-row class="card-info">
         <ion-row class="d-flex w-100">
@@ -102,9 +87,81 @@
     </ion-col>
   </ion-row>
   <ion-row class="ion-margin-bottom">
-    <ion-col class="week-closed">
+    <ion-col class="day-closed">
       <ion-row>
-        <ion-text>Semana 04</ion-text>
+        <ion-text>Quinta</ion-text>
+      </ion-row>
+      <ion-row class="card-info">
+        <ion-row class="d-flex w-100">
+          <div class="dados">
+            <div class="tempo">
+              <div class="tempo-icon">
+                <img src="../../assets/images/relogio.svg">
+              </div>
+            </div>
+            <div class="pontos">
+              <div class="pontos-icon">
+                <img src="../../assets/images/estrela.svg">
+              </div>
+            </div>
+          </div>
+          <div class="icon-card"></div>
+        </ion-row>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-margin-bottom">
+    <ion-col class="day-closed">
+      <ion-row>
+        <ion-text>Sexta</ion-text>
+      </ion-row>
+      <ion-row class="card-info">
+        <ion-row class="d-flex w-100">
+          <div class="dados">
+            <div class="tempo">
+              <div class="tempo-icon">
+                <img src="../../assets/images/relogio.svg">
+              </div>
+            </div>
+            <div class="pontos">
+              <div class="pontos-icon">
+                <img src="../../assets/images/estrela.svg">
+              </div>
+            </div>
+          </div>
+          <div class="icon-card"></div>
+        </ion-row>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-margin-bottom">
+    <ion-col class="day-closed">
+      <ion-row>
+        <ion-text>Sábado</ion-text>
+      </ion-row>
+      <ion-row class="card-info">
+        <ion-row class="d-flex w-100">
+          <div class="dados">
+            <div class="tempo">
+              <div class="tempo-icon">
+                <img src="../../assets/images/relogio.svg">
+              </div>
+            </div>
+            <div class="pontos">
+              <div class="pontos-icon">
+                <img src="../../assets/images/estrela.svg">
+              </div>
+            </div>
+          </div>
+          <div class="icon-card"></div>
+        </ion-row>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-margin-bottom">
+    <ion-col class="day-closed">
+      <ion-row>
+        <ion-text>Domingo</ion-text>
       </ion-row>
       <ion-row class="card-info">
         <ion-row class="d-flex w-100">
