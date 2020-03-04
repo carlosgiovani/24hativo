@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'week',
     loadChildren: () => import('./week/week.module').then( m => m.WeekPageModule)
   },
+  {
+    path: 'day',
+    loadChildren: () => import('./day/day.module').then( m => m.DayPageModule)
+  },
 
 ];
 

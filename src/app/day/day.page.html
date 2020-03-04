@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title>day</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-text>
+      Semana 1 de Janeiro
+    </ion-text>
+  </ion-row>
+  <ion-row>
+    <h1 class="titulo">Terça</h1>
+  </ion-row>
+  <ion-row>
+    <ion-text>
+      Começar atividade
+    </ion-text>
+  </ion-row>
+  <ion-row>
+    <div class="tempo">
+      <div class="tempo-icon">
+        <img src="../../assets/images/relogio.svg">
+      </div>
+      <div class="tempo-tempo">
+        {{_minutos}}:{{_segundos}}.{{_centesimas}}
+      </div>
+    </div>
+  </ion-row>
+  <ion-row>
+    <div class="btn-play">
+      <ion-icon [name]=estado (click)="estadoSwap()"></ion-icon>
+    </div>
+    <div class="btn-refresh">
+      <ion-icon  name="refresh" (click)="stop()"></ion-icon>
+    </div>
+    <div class="btn-refresh">
+      <ion-icon name="save-outline"></ion-icon>
+    </div>
+  </ion-row>
+</ion-content>
