@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'day',
     loadChildren: () => import('./day/day.module').then( m => m.DayPageModule)
   },
+  {
+    path: 'modal',
+    loadChildren: () => import('./components/modal/modal.module').then( m => m.ModalPageModule)
+  },
 
 ];
 

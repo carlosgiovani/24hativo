@@ -1,9 +1,9 @@
-.tempo{
+.timer{
     background-color: green;
     border-radius: 25px;
     display: flex;
     align-items: center;
-    width: 60%;
+    width: 205px;
     &-icon {
         background-color: #bbb8b8;
         display: flex;
@@ -27,5 +27,31 @@
         text-align: right;
         flex-grow: 1;
         padding-right: 17px;
+    }
+}
+
+.icon-status{
+    background-color: green;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    min-width: 49%;
+    padding-right: 10px;
+    &-icon {
+        background: #ffffff;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        img {
+            width: 30px;
+        }
+    }
+    &-feeling{
+        font-size: 25px;
+        font-weight: 300;
+        flex-grow: 1;
+        padding: 0 8px;
     }
 }
