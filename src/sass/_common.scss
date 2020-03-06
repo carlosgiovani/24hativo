@@ -1,0 +1,35 @@
+.header-md:after{
+  background-image: none;
+}
+// ion-toolbar {
+//   --background: transparent;
+//   --ion-color-base: transparent !important;
+// }
+ion-content{
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    --color: #ffffff;
+}
+.titulo{
+    font-size: 38px;
+    font-weight: 300;
+    margin-top: 0px;
+}
+.select-mes {
+    border: 0px;
+    background-color: transparent;
+    font-size: 38px;
+    font-weight: 300;
+  }
+  
+  ion-progress-bar {
+    --progress-background: #FF9F00;
+    --buffer-background: #685656;
+    height: 20px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+  }

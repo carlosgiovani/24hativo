@@ -5,17 +5,28 @@ ion-button {
 }
 
 .btn {
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    background-color: green;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    &-circular{
+        background: url('./assets/images/btn_circular.png')90% 90% / cover;
+        width: 45px;
+        height: 45px;
+    }
+    &-play, &-refresh, &-save{
+        width: 45px;
+        height: 45px;
+        border: 1px solid gray;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        ion-icon{
+            color: gray;
+            font-size: 25px;
+        }
+    }
+    &-area{
+        width: 205px;
+        margin: auto;
+    }
 }
 
 .iconSize {

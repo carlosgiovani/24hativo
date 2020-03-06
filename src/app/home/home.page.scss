@@ -1,2 +1,7 @@
-
-
+ion-content{
+    --background: url('../../assets/images/bg_01_purple.jpg') no-repeat 74% 100% / cover;
+}
+.bg-logo{
+    background: url('../../assets/images/logo_corte.png') 100% 20% / 27% auto no-repeat;
+    background-attachment: fixed;
+}

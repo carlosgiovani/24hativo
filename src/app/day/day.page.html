@@ -21,25 +21,83 @@
       Começar atividade
     </ion-text>
   </ion-row>
-  <ion-row>
-    <div class="tempo">
-      <div class="tempo-icon">
+  <ion-row class="ion-justify-content-center ion-margin-vertical">
+    <div class="timer">
+      <div class="timer-icon">
         <img src="../../assets/images/relogio.svg">
       </div>
-      <div class="tempo-tempo">
-        {{_minutos}}:{{_segundos}}.{{_centesimas}}
+      <div class="timer-tempo">
+        {{Horas}}:{{Minutos}}:{{Segundos}}.{{Centesimas}}
+      </div>
+    </div>
+  </ion-row>
+  <ion-row class="ion-justify-content-between btn-area">
+    <div class="btn-play" (click)="estadoSwap()">
+      <ion-icon [name]=estado></ion-icon>
+    </div>
+    <div class="btn-refresh" (click)="stop()">
+      <ion-icon  name="refresh"></ion-icon>
+    </div>
+    <div class="btn-save" (click)="presentModal()">
+      <ion-icon name="save-outline"></ion-icon>
+    </div>
+  </ion-row>
+  <ion-row>
+    <ion-text>
+      Semana 1 de Janeiro
+    </ion-text>
+  </ion-row>
+  <ion-row>
+    <select class="select-mes">
+      <option>Segunda</option>
+      <option>Terça</option>
+      <option>Quarta</option>
+      <option>Quinta</option>
+      <option>Sexta</option>
+      <option>Sábado</option>
+      <option>Domingo</option>
+    </select>
+  </ion-row>
+  <ion-row class="record ion-justify-content-between">
+    <div class="dados">
+      <div class="tempo">
+        <div class="tempo-icon">
+          <img src="../../assets/images/relogio.svg">
+        </div>
+        <div class="tempo-tempo">
+          00:00:00
+        </div>
+      </div>
+      <div class="pontos">
+        <div class="pontos-icon">
+          <img src="../../assets/images/estrela.svg">
+        </div>
+        <div class="pontos-valor">
+          0000
+        </div>
+      </div>
+    </div>
+    <div class="medal"></div>
+  </ion-row>
+  <ion-row>
+    Me senti
+  </ion-row>
+  <ion-row>
+    <div class="icon-status">
+      <div class="icon-status-icon">
+        <img src="../../../assets/icon/emoji.svg">
+      </div>
+      <div class="icon-status-feeling">
+        Bem
       </div>
     </div>
   </ion-row>
   <ion-row>
-    <div class="btn-play">
-      <ion-icon [name]=estado (click)="estadoSwap()"></ion-icon>
-    </div>
-    <div class="btn-refresh">
-      <ion-icon  name="refresh" (click)="stop()"></ion-icon>
-    </div>
-    <div class="btn-refresh">
-      <ion-icon name="save-outline"></ion-icon>
-    </div>
+    <ion-text>Anotações</ion-text>
+  </ion-row>
+  <ion-row>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+    laboris nisi ut aliquip ex ea commodo consequat.
   </ion-row>
 </ion-content>

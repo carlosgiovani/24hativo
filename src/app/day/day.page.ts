@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, NavController, Platform } from '@ionic/angular';
+import { AlertController, NavController, Platform, ModalController } from '@ionic/angular';
+import { ModalPage } from '../components/modal/modal.page';
 
 @Component({
   selector: 'app-day',
@@ -9,19 +10,21 @@ import { AlertController, NavController, Platform } from '@ionic/angular';
 export class DayPage implements OnInit {
 
   public centesimas = 0;
-  public minutos = 59;
   public segundos = 0;
+  public minutos = 0;
+  public horas = 0;
   public contador: any;
 
-  public _centesimas = '00';
-  public _minutos = '00';
-  public _segundos = '00';
+  public Centesimas = '00';
+  public Segundos = '00';
+  public Minutos = '00';
+  public Horas = '00';
 
   isRun = false;
   estado = 'play';
   refreshColor = 'light';
 
-  constructor(public navCtrl: NavController, private plt: Platform, alertCtrl: AlertController) { }
+  constructor(public navCtrl: NavController, private plt: Platform, alertCtrl: AlertController, public modalController: ModalController) { }
 
   estadoSwap() {
     this.isRun = !this.isRun;
@@ -37,28 +40,29 @@ export class DayPage implements OnInit {
   }
 
   start() {
-
     this.contador = setInterval(() => {
       this.centesimas += 1;
-      if (this.centesimas < 10) this._centesimas = '0' + this.centesimas;
-      else this._centesimas = '' + this.centesimas;
+      if (this.centesimas < 10) { this.Centesimas = '0' + this.centesimas; } else { this.Centesimas = '' + this.centesimas; }
       if (this.centesimas === 10) {
         this.centesimas = 0;
         this.segundos += 1;
-        if (this.segundos < 10) this._segundos = '0' + this.segundos;
-        else this._segundos = this.segundos + '';
+
+        if (this.segundos < 10) { this.Segundos = '0' + this.segundos; } else { this.Segundos = '' + this.segundos; }
         if (this.segundos === 60) {
           this.segundos = 0;
           this.minutos += 1;
-          if (this.minutos < 10) this._minutos = '0' + this.minutos;
-          else this._minutos = this.minutos + '';
-          this._segundos = '00';
-          if (this.minutos === 90) {
-            this.pause();
+
+          if (this.minutos < 10) { this.Minutos = '0' + this.minutos; } else { this.Minutos = '' + this.minutos; }
+          this.Segundos = '00';
+          if (this.minutos === 60) {
+           this.minutos = 0;
+           this.horas += 1;
+
+           if (this.horas < 10) { this.Horas = '0' + this.horas; } else { this.Horas = '' + this.horas; }
           }
         }
       }
-    }, 100)
+    }, 100 );
   }
 
   pause() {
@@ -69,19 +73,27 @@ export class DayPage implements OnInit {
 
     if (!this.isRun) {
       clearInterval(this.contador);
+      this.horas = 0;
       this.minutos = 0;
       this.segundos = 0;
       this.centesimas = 0;
 
-      this._centesimas = '00';
-      this._segundos = '00';
-      this._minutos = '00';
+      this.Centesimas = '00';
+      this.Segundos = '00';
+      this.Minutos = '00';
+      this.Horas = '00';
 
       this.estado = 'play';
       this.isRun = false;
       this.contador = null;
     }
+  }
 
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: ModalPage
+    });
+    return await modal.present();
   }
 
   ngOnInit() {

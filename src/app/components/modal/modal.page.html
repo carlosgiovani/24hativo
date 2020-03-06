@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- <ion-title>modal</ion-title> -->
+    <ion-buttons slot="secondary">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <h1 class="titulo">
+      Como você está<br>
+      se sentido?
+    </h1>
+  </ion-row>
+  <ion-row class="icons-status ion-justify-content-between">
+    <img src="../../../assets/icon/emoji.svg" class="selected">
+    <img src="../../../assets/icon/emoji (1).svg">
+    <img src="../../../assets/icon/sad.svg">
+    <img src="../../../assets/icon/emoji (2).svg">
+  </ion-row>
+  <ion-row>
+    Anotações
+  </ion-row>
+  <ion-row>
+    <ion-textarea type="text" rows="7" cols="35"></ion-textarea>
+  </ion-row>
+  <ion-row>
+    <div class="btn-save">
+      <ion-icon name="save-outline"></ion-icon>
+    </div>
+  </ion-row>
+</ion-content>
