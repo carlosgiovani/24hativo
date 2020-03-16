@@ -1,0 +1,11 @@
+ion-toolbar {
+    --background: transparent;
+    --ion-color-base: transparent !important;
+  }
+ion-content{
+    --background: url('../../assets/images/bg_03_blue.jpg') no-repeat 74% 100% / cover;
+}
+.bg-logo{
+    background: url('../../assets/images/logo_corte.png') 100% 20% / 27% auto no-repeat;
+    background-attachment: fixed;
+}

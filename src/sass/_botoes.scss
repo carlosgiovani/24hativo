@@ -13,13 +13,13 @@ ion-button {
     &-play, &-refresh, &-save{
         width: 45px;
         height: 45px;
-        border: 1px solid gray;
+        border: 1px solid #ffffff;
         border-radius: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
         ion-icon{
-            color: gray;
+            color: #ffffff;
             font-size: 25px;
         }
     }
