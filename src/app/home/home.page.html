@@ -16,115 +16,68 @@
     </ion-row>
     <ion-row class="ion-margin-bottom">
       <select class="select-mes">
-        <option>Janeiro</option>
-        <option>Fevereiro</option>
-        <option>Março</option>
-        <option>Abril</option>
-        <option>Maio</option>
-        <option>Junho</option>
+        <option 
+          *ngFor="let mes of meses" 
+          selected ="{{mes.CurrentMonth}}"
+          value="{{mes.Value}}">{{mes.Description}}
+        </option>
       </select>
     </ion-row>
-    <ion-row class="ion-margin-bottom">
-      <ion-col class="week-finished" [routerLink]="['../week']">
-        <ion-row>
-          <ion-text>Semana 01</ion-text>
-        </ion-row>
-        <ion-row class="card-info">
-          <ion-row class="d-flex w-100">
-            <div class="dados">
-              <div class="tempo">
-                <div class="tempo-icon">
-                  <img src="../../assets/images/relogio.svg">
-                </div>
-                <div class="tempo-tempo">
-                  00:00
-                </div>
-              </div>
-              <div class="pontos">
-                <div class="pontos-icon">
-                  <img src="../../assets/images/estrela.svg">
-                </div>
-                <div class="pontos-valor">
-                  0000
-                </div>
-              </div>
-            </div>
-            <div class="icon-card"></div>
+
+      <ion-row class="ion-margin-bottom" *ngFor="let semana of semanas" >
+        <ion-col class="{{semana.Class}}" [routerLink]="['../week']" *ngIf="!semana.Concluido">
+          <ion-row>
+            <ion-text>{{semana.Titulo}}</ion-text>
           </ion-row>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-margin-bottom">
-      <ion-col class="week-open">
-        <ion-row>
-          <ion-text>Semana 02</ion-text>
-        </ion-row>
-        <ion-row class="card-info">
-          <ion-row class="d-flex w-100">
-            <div class="dados">
-              <div class="tempo">
-                <div class="tempo-icon">
-                  <img src="../../assets/images/clock_gray.svg">
+          <ion-row class="card-info">
+            <ion-row class="d-flex w-100">
+              <div class="dados">
+                <div class="tempo">
+                  <div class="tempo-icon">
+                    <img src="../../assets/images/clock_gray.svg">
+                  </div>
+                </div>
+                <div class="pontos">
+                  <div class="pontos-icon">
+                    <img src="../../assets/images/star_gray.svg">
+                  </div>
                 </div>
               </div>
-              <div class="pontos">
-                <div class="pontos-icon">
-                  <img src="../../assets/images/star_gray.svg">
-                </div>
-              </div>
-            </div>
-            <div class="icon-card"></div>
+              <div class="icon-card"></div>
+            </ion-row>
           </ion-row>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-margin-bottom">
-      <ion-col class="week-closed">
-        <ion-row>
-          <ion-text>Semana 03</ion-text>
-        </ion-row>
-        <ion-row class="card-info">
-          <ion-row class="d-flex w-100">
-            <div class="dados">
-              <div class="tempo">
-                <div class="tempo-icon">
-                  <img src="../../assets/images/clock_gray.svg">
-                </div>
-              </div>
-              <div class="pontos">
-                <div class="pontos-icon">
-                  <img src="../../assets/images/star_gray.svg">
-                </div>
-              </div>
-            </div>
-            <div class="icon-card"></div>
+        </ion-col>
+
+        <ion-col class="week-finished" [routerLink]="['../week']" *ngIf="semana.Concluido">
+          <ion-row>
+            <ion-text>{{semana.Titulo}}</ion-text>
           </ion-row>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-margin-bottom">
-      <ion-col class="week-closed">
-        <ion-row>
-          <ion-text>Semana 04</ion-text>
-        </ion-row>
-        <ion-row class="card-info">
-          <ion-row class="d-flex w-100">
-            <div class="dados">
-              <div class="tempo">
-                <div class="tempo-icon">
-                  <img src="../../assets/images/clock_gray.svg">
+          <ion-row class="card-info">
+            <ion-row class="d-flex w-100">
+              <div class="dados">
+                <div class="tempo">
+                  <div class="tempo-icon">
+                    <img src="../../assets/images/relogio.svg">
+                  </div>
+                  <div class="tempo-tempo">
+                    00:00
+                  </div>
+                </div>
+                <div class="pontos">
+                  <div class="pontos-icon">
+                    <img src="../../assets/images/estrela.svg">
+                  </div>
+                  <div class="pontos-valor">
+                    0000
+                  </div>
                 </div>
               </div>
-              <div class="pontos">
-                <div class="pontos-icon">
-                  <img src="../../assets/images/star_gray.svg">
-                </div>
-              </div>
-            </div>
-            <div class="icon-card"></div>
+              <div class="icon-card"></div>
+            </ion-row>
           </ion-row>
-        </ion-row>
-      </ion-col>
-    </ion-row>
+        </ion-col>
+
+
+      </ion-row> 
   </div>
 </ion-content>
