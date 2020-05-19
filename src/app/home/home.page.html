@@ -15,7 +15,7 @@
       </ion-text>
     </ion-row>
     <ion-row class="ion-margin-bottom">
-      <select class="select-mes">
+      <select class="select-mes" (change)="carregarSemanaPorMes($event)">
         <option 
           *ngFor="let mes of meses" 
           selected ="{{mes.CurrentMonth}}"

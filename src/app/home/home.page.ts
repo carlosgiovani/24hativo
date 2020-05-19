@@ -14,6 +14,7 @@ import { CommonService } from '../core/Common';
 export class HomePage implements OnInit {
 
   private atividadeInicial = false;
+  private dataInicial:any;
   private meses:any;
   private semanas:any;
 
@@ -31,19 +32,23 @@ export class HomePage implements OnInit {
 
   configurarApp(user: any){
     this.apiService.buscarEventoAtivo(user).subscribe( resp => {
-
+      this.dataInicial = resp.data.evento.data_inicio;
       this.meses = this.commonService.getMonthsEvent(resp.data.evento.data_inicio);
       
-      this.carrgarAtividades(user._id, resp.data.evento._id);     
+      this.carregarAtividades(user._id, resp.data.evento._id);     
 
     });
   }
 
-  carrgarAtividades(id_atleta, id_atividade){
+  carregarAtividades(id_atleta, id_atividade){
     this.apiService.buscarAtividadesPorEventoAtleta(id_atleta, id_atividade).subscribe(resp => {
       this.atividadeInicial = resp.atividades.length == 0;
-      this.semanas = this.commonService.getWeekEvent(resp.atividades);
+      this.semanas = this.commonService.getWeekEvent(resp.atividades, this.dataInicial);
     });
   }
 
+  carregarSemanaPorMes(e)
+  {
+    //alert(e.target.value);
+  }
 }
