@@ -62,37 +62,58 @@ export class CommonService implements OnInit  {
 
         let mesAtivo = dataInicioParametro <= semana04 ? 1 : dataInicioParametro <= semana07 ? 2 : 3;
 
-        if(atividades.length == 0)
-        {
-            let semanaAtual01 = mesAtivo === 1 ? 1 : mesAtivo === 2 ? 5 : 9;
-            let semanaAtual02 = semanaAtual01 + 1;
-            let semanaAtual03 = semanaAtual02 + 1;
-            let semanaAtual04 = semanaAtual03 + 1;
+        let semanaAtual01 = mesAtivo === 1 ? 1 : mesAtivo === 2 ? 5 : 9;
+        let semanaAtual02 = semanaAtual01 + 1;
+        let semanaAtual03 = semanaAtual02 + 1;
+        let semanaAtual04 = semanaAtual03 + 1;
 
-            let dataAtualParametro = this.addDays(new Date(), -1);
-            let semanaAtiva = 1;
+        let dataAtualParametro = this.addDays(new Date(), -1);
+        let semanaAtiva = 1;
 
-            if(mesAtivo === 1) {
-                semanaAtiva = dataAtualParametro <= semana01 ? 1 : dataAtualParametro <= semana02 ? 2 : dataAtualParametro <= semana03 ? 3 : 4; 
-            }
-            if(mesAtivo === 2) {
-                semanaAtiva = dataAtualParametro <= semana05 ? 5 : dataAtualParametro <= semana06 ? 6 : dataAtualParametro <= semana07 ? 7 : 8; 
-            }
-            if(mesAtivo === 3) {
-                semanaAtiva = dataAtualParametro <= semana09 ? 9 : dataAtualParametro <= semana10 ? 10 : dataAtualParametro <= semana11 ? 11 : 12; 
-            }
-
-            let weeks = 
-            [
-                { Titulo: 'Semana ' + semanaAtual01, Concluido: false , Class: (semanaAtiva == semanaAtual01 ? "week-open" : "week-closed") },
-                { Titulo: 'Semana ' + semanaAtual02, Concluido: false , Class: (semanaAtiva == semanaAtual02 ? "week-open" : "week-closed") },
-                { Titulo: 'Semana ' + semanaAtual03, Concluido: false,  Class: (semanaAtiva == semanaAtual03 ? "week-open" : "week-closed") },
-                { Titulo: 'Semana ' + semanaAtual04, Concluido: false , Class: (semanaAtiva == semanaAtual04 ? "week-open" : "week-closed") }
-            ];
-
-            return weeks;
+        if(mesAtivo === 1) {
+            semanaAtiva = dataAtualParametro <= semana01 ? 1 : dataAtualParametro <= semana02 ? 2 : dataAtualParametro <= semana03 ? 3 : 4; 
+        }
+        if(mesAtivo === 2) {
+            semanaAtiva = dataAtualParametro <= semana05 ? 5 : dataAtualParametro <= semana06 ? 6 : dataAtualParametro <= semana07 ? 7 : 8; 
+        }
+        if(mesAtivo === 3) {
+            semanaAtiva = dataAtualParametro <= semana09 ? 9 : dataAtualParametro <= semana10 ? 10 : dataAtualParametro <= semana11 ? 11 : 12; 
         }
 
+        let weeks = 
+        [
+            { Titulo: 'Semana ' + semanaAtual01, InfoSemana: this.buscarDadosPorSemana(atividades, semanaAtual01) , Class: (semanaAtiva == semanaAtual01 ? "week-open" : "week-closed") },
+            { Titulo: 'Semana ' + semanaAtual02, InfoSemana: this.buscarDadosPorSemana(atividades, semanaAtual02) , Class: (semanaAtiva == semanaAtual02 ? "week-open" : "week-closed") },
+            { Titulo: 'Semana ' + semanaAtual03, InfoSemana: this.buscarDadosPorSemana(atividades, semanaAtual03),  Class: (semanaAtiva == semanaAtual03 ? "week-open" : "week-closed") },
+            { Titulo: 'Semana ' + semanaAtual04, InfoSemana: this.buscarDadosPorSemana(atividades, semanaAtual04) , Class: (semanaAtiva == semanaAtual04 ? "week-open" : "week-closed") }
+        ];
+
+        return weeks;
+
+    }
+
+    buscarDadosPorSemana(atividades: any, semana : number){
+
+        let semanaAtual = atividades.filter(x => x.semana === semana);
+
+        console.log(semanaAtual);
+
+        var tempo = 0;
+        var pontos = 0;
+
+        let retorno = semanaAtual.reduce( ({} , semanaAtual ) => { 
+             tempo += semanaAtual.tempo;
+             pontos += semanaAtual.pontuacao;
+
+            return {
+                tempo: tempo,
+                pontuacao: pontos
+            };
+        }, { tempo:0, pontuacao:0, concluida : false });
+
+        retorno.concluida = semanaAtual.length === 7;
+
+        return retorno;
     }
 
     addDays(date, days) {

@@ -17,7 +17,7 @@ export class ApiService {
         return this.httpClient.get(this.API_URL + '/eventoativoatleta?id_atleta=' + user._id);
     }
 
-    buscarAtividadesPorEventoAtleta(user, id_evento) : any {
+    buscarAtividadesPorEventoAtleta(user, id_evento) : any {        
         return this.httpClient.get(this.API_URL + '/atividades?id_atleta=' + user._id + '&id_evento='+ id_evento);
     }
 }

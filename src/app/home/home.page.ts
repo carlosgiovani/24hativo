@@ -32,16 +32,17 @@ export class HomePage implements OnInit {
 
   configurarApp(user: any){
     this.apiService.buscarEventoAtivo(user).subscribe( resp => {
+
       this.dataInicial = resp.data.evento.data_inicio;
       this.meses = this.commonService.getMonthsEvent(resp.data.evento.data_inicio);
       
-      this.carregarAtividades(user._id, resp.data.evento._id);     
+      this.carregarAtividades(user, resp.data.evento._id);     
 
     });
   }
 
-  carregarAtividades(id_atleta, id_atividade){
-    this.apiService.buscarAtividadesPorEventoAtleta(id_atleta, id_atividade).subscribe(resp => {
+  carregarAtividades(id_atleta, id_evento){
+    this.apiService.buscarAtividadesPorEventoAtleta(id_atleta, id_evento).subscribe(resp => {
       this.atividadeInicial = resp.atividades.length == 0;
       this.semanas = this.commonService.getWeekEvent(resp.atividades, this.dataInicial);
     });
