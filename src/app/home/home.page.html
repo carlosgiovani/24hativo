@@ -23,9 +23,35 @@
         </option>
       </select>
     </ion-row>
-
+    <div *ngIf="DisplayNone">
+      <ion-row lass="ion-margin-bottom" *ngFor="let x of dotsCount">
+        <ion-col >
+          <ion-row>
+            <ion-spinner name="dots"></ion-spinner>  
+          </ion-row>
+          <ion-row class="card-info">
+            <ion-row class="d-flex w-100">
+              <div class="dados">
+                <div class="tempo">
+                  <div class="tempo-icon">
+                    <ion-spinner name="dots"></ion-spinner>  
+                  </div>
+                </div>
+                <div class="pontos">
+                  <div class="pontos-icon">
+                    <ion-spinner name="dots"></ion-spinner>  
+                  </div>
+                </div>
+              </div>
+              <div class="icon-card"></div>
+            </ion-row>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div *ngIf="!DisplayNone">
       <ion-row class="ion-margin-bottom" *ngFor="let semana of semanas" >
-        <ion-col class="{{semana.Class}}" [routerLink]="['../week']" *ngIf="!semana?.InfoSemana.concluida">
+        <ion-col class="{{semana.Class}}" (click)="visualizarInfoSemana(semana)" *ngIf="!semana?.InfoSemana.concluida">
           <ion-row>
             <ion-text>{{semana.Titulo}}</ion-text>
           </ion-row>
@@ -48,7 +74,7 @@
           </ion-row>
         </ion-col>
 
-        <ion-col class="week-finished" [routerLink]="['../week']" *ngIf="semana?.InfoSemana.concluida">
+        <ion-col class="week-finished" (click)="visualizarInfoSemana(semana)"  *ngIf="semana?.InfoSemana.concluida">
           <ion-row>
             <ion-text>{{semana.Titulo}}</ion-text>
           </ion-row>
@@ -76,8 +102,7 @@
             </ion-row>
           </ion-row>
         </ion-col>
-
-
       </ion-row> 
+    </div>
   </div>
 </ion-content>

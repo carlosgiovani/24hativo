@@ -2,7 +2,9 @@ import { Injectable, OnInit } from "@angular/core";
 
 @Injectable({ providedIn: 'root' })
 export class CommonService implements OnInit  { 
-
+    public weekView_key = 'weekView_key';
+    private weekInfo_key = 'weekInfo_key';
+    private monthInfo_key = 'monthInfo_key';
     private meses = [ "Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
     private dias = ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'];
 
@@ -12,6 +14,12 @@ export class CommonService implements OnInit  {
 
     public getMonthsEvent(startEventDate)
     {
+        var retrievedObject = localStorage.getItem(this.monthInfo_key);
+
+        if(retrievedObject) {
+            return JSON.parse(retrievedObject);
+        }
+
         let dataArray = startEventDate.split('-');
         let firstMonth = dataArray[1] - 1;
         let secondMonth = firstMonth + 1 === 12 ? 0: firstMonth + 1;
@@ -38,10 +46,22 @@ export class CommonService implements OnInit  {
             }
         ];
 
+        localStorage.setItem(this.monthInfo_key, JSON.stringify(eventMonths));
+
         return eventMonths;
     }
 
-    public getWeekEvent(atividades, dataInicio){
+    public getWeekInfo(atividades, dataInicio){
+        var retrievedObject = localStorage.getItem(this.weekInfo_key);
+
+        if(retrievedObject) {
+            return JSON.parse(retrievedObject);
+        }
+
+        return this.getWeekEvent(atividades, dataInicio);
+    }
+
+    getWeekEvent(atividades, dataInicio){
         
         let dataInicioParametro = this.addDays(dataInicio,0);
 
@@ -82,11 +102,13 @@ export class CommonService implements OnInit  {
 
         let weeks = 
         [
-            { Titulo: 'Semana ' + semanaAtual01, InfoSemana: this.buscarDadosPorSemana(atividades, semanaAtual01) , Class: (semanaAtiva == semanaAtual01 ? "week-open" : "week-closed") },
+            { Titulo: 'Semana ' + semanaAtual01, InfoSemana: this.buscarDadosPorSemana(atividades, semanaAtual01), Class: (semanaAtiva == semanaAtual01 ? "week-open" : "week-closed") },
             { Titulo: 'Semana ' + semanaAtual02, InfoSemana: this.buscarDadosPorSemana(atividades, semanaAtual02) , Class: (semanaAtiva == semanaAtual02 ? "week-open" : "week-closed") },
             { Titulo: 'Semana ' + semanaAtual03, InfoSemana: this.buscarDadosPorSemana(atividades, semanaAtual03),  Class: (semanaAtiva == semanaAtual03 ? "week-open" : "week-closed") },
             { Titulo: 'Semana ' + semanaAtual04, InfoSemana: this.buscarDadosPorSemana(atividades, semanaAtual04) , Class: (semanaAtiva == semanaAtual04 ? "week-open" : "week-closed") }
         ];
+
+        localStorage.setItem(this.weekInfo_key, JSON.stringify(weeks));
 
         return weeks;
 
@@ -95,9 +117,6 @@ export class CommonService implements OnInit  {
     buscarDadosPorSemana(atividades: any, semana : number){
 
         let semanaAtual = atividades.filter(x => x.semana === semana);
-
-        console.log(semanaAtual);
-
         var tempo = 0;
         var pontos = 0;
 
@@ -106,15 +125,36 @@ export class CommonService implements OnInit  {
              pontos += semanaAtual.pontuacao;
 
             return {
-                tempo: tempo,
+                tempo: this.formatarMinutos(tempo),
                 pontuacao: pontos
             };
         }, { tempo:0, pontuacao:0, concluida : false });
 
+        retorno.atividades = semanaAtual;
         retorno.concluida = semanaAtual.length === 7;
 
         return retorno;
     }
+
+    setData(data, key) {
+        localStorage.removeItem(key);
+        localStorage.setItem(key, JSON.stringify(data));
+    }
+
+    getData(key){
+        var retrievedObject = localStorage.getItem(key);
+
+        if(retrievedObject) {
+            return JSON.parse(retrievedObject);
+        }
+    }
+
+    public formatarMinutos(time) { 
+    var hours = Math.floor(time / 60);  
+    var minutes = time % 60;
+    return hours + ":" + minutes;         
+    }
+
 
     addDays(date, days) {
         var result = new Date(date);

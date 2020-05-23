@@ -26,9 +26,34 @@
       </select>
     </ion-row>
     <ion-row class="ion-margin-bottom">
-      <ion-col class="day-finished" [routerLink]="['../day']">
+      
+    </ion-row>
+    <ion-row class="ion-margin-bottom" *ngFor="let dia of data">
+      <ion-col class="{{dia?.InfoDia.Class}}" *ngIf="!dia?.InfoDia.Concluido">
         <ion-row>
-          <ion-text>Segunda</ion-text>
+          <ion-text>{{dia.Titulo}}</ion-text>
+        </ion-row>
+        <ion-row class="card-info">
+          <ion-row class="d-flex w-100">
+            <div class="dados">
+              <div class="tempo">
+                <div class="tempo-icon">
+                  <img src="../../assets/images/clock_gray.svg">
+                </div>
+              </div>
+              <div class="pontos">
+                <div class="pontos-icon">
+                  <img src="../../assets/images/star_gray.svg">
+                </div>
+              </div>
+            </div>
+            <div class="icon-card"></div>
+          </ion-row>
+        </ion-row>
+      </ion-col>
+      <ion-col  [routerLink]="['../day']" class="{{dia?.InfoDia.Class}}" *ngIf="dia?.InfoDia.Concluido">
+        <ion-row>
+          <ion-text>{{dia.Titulo}}</ion-text>
         </ion-row>
         <ion-row class="card-info">
           <ion-row class="d-flex w-100">
@@ -38,7 +63,7 @@
                   <img src="../../assets/images/relogio.svg">
                 </div>
                 <div class="tempo-tempo">
-                  00:00
+                  {{dia.InfoDia.tempo}}
                 </div>
               </div>
               <div class="pontos">
@@ -46,151 +71,7 @@
                   <img src="../../assets/images/estrela.svg">
                 </div>
                 <div class="pontos-valor">
-                  0000
-                </div>
-              </div>
-            </div>
-            <div class="icon-card"></div>
-          </ion-row>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-margin-bottom">
-      <ion-col class="day-open">
-        <ion-row>
-          <ion-text>Terça</ion-text>
-        </ion-row>
-        <ion-row class="card-info">
-          <ion-row class="d-flex w-100">
-            <div class="dados">
-              <div class="tempo">
-                <div class="tempo-icon">
-                  <img src="../../assets/images/clock_gray.svg">
-                </div>
-              </div>
-              <div class="pontos">
-                <div class="pontos-icon">
-                  <img src="../../assets/images/star_gray.svg">
-                </div>
-              </div>
-            </div>
-            <div class="icon-card"></div>
-          </ion-row>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-margin-bottom">
-      <ion-col class="day-closed">
-        <ion-row>
-          <ion-text>Quarta</ion-text>
-        </ion-row>
-        <ion-row class="card-info">
-          <ion-row class="d-flex w-100">
-            <div class="dados">
-              <div class="tempo">
-                <div class="tempo-icon">
-                  <img src="../../assets/images/clock_gray.svg">
-                </div>
-              </div>
-              <div class="pontos">
-                <div class="pontos-icon">
-                  <img src="../../assets/images/star_gray.svg">
-                </div>
-              </div>
-            </div>
-            <div class="icon-card"></div>
-          </ion-row>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-margin-bottom">
-      <ion-col class="day-closed">
-        <ion-row>
-          <ion-text>Quinta</ion-text>
-        </ion-row>
-        <ion-row class="card-info">
-          <ion-row class="d-flex w-100">
-            <div class="dados">
-              <div class="tempo">
-                <div class="tempo-icon">
-                  <img src="../../assets/images/clock_gray.svg">
-                </div>
-              </div>
-              <div class="pontos">
-                <div class="pontos-icon">
-                  <img src="../../assets/images/star_gray.svg">
-                </div>
-              </div>
-            </div>
-            <div class="icon-card"></div>
-          </ion-row>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-margin-bottom">
-      <ion-col class="day-closed">
-        <ion-row>
-          <ion-text>Sexta</ion-text>
-        </ion-row>
-        <ion-row class="card-info">
-          <ion-row class="d-flex w-100">
-            <div class="dados">
-              <div class="tempo">
-                <div class="tempo-icon">
-                  <img src="../../assets/images/clock_gray.svg">
-                </div>
-              </div>
-              <div class="pontos">
-                <div class="pontos-icon">
-                  <img src="../../assets/images/star_gray.svg">
-                </div>
-              </div>
-            </div>
-            <div class="icon-card"></div>
-          </ion-row>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-margin-bottom">
-      <ion-col class="day-closed">
-        <ion-row>
-          <ion-text>Sábado</ion-text>
-        </ion-row>
-        <ion-row class="card-info">
-          <ion-row class="d-flex w-100">
-            <div class="dados">
-              <div class="tempo">
-                <div class="tempo-icon">
-                  <img src="../../assets/images/clock_gray.svg">
-                </div>
-              </div>
-              <div class="pontos">
-                <div class="pontos-icon">
-                  <img src="../../assets/images/star_gray.svg">
-                </div>
-              </div>
-            </div>
-            <div class="icon-card"></div>
-          </ion-row>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-margin-bottom">
-      <ion-col class="day-closed">
-        <ion-row>
-          <ion-text>Domingo</ion-text>
-        </ion-row>
-        <ion-row class="card-info">
-          <ion-row class="d-flex w-100">
-            <div class="dados">
-              <div class="tempo">
-                <div class="tempo-icon">
-                  <img src="../../assets/images/clock_gray.svg">
-                </div>
-              </div>
-              <div class="pontos">
-                <div class="pontos-icon">
-                  <img src="../../assets/images/star_gray.svg">
+                  {{dia.InfoDia.pontuacao}}
                 </div>
               </div>
             </div>

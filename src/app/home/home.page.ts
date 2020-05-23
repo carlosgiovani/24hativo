@@ -17,6 +17,8 @@ export class HomePage implements OnInit {
   private dataInicial:any;
   private meses:any;
   private semanas:any;
+  private dotsCount = [0,1,2,3];
+  private DisplayNone = true;
 
   constructor(
     private router: Router,
@@ -44,8 +46,16 @@ export class HomePage implements OnInit {
   carregarAtividades(id_atleta, id_evento){
     this.apiService.buscarAtividadesPorEventoAtleta(id_atleta, id_evento).subscribe(resp => {
       this.atividadeInicial = resp.atividades.length == 0;
-      this.semanas = this.commonService.getWeekEvent(resp.atividades, this.dataInicial);
+      this.semanas = this.commonService.getWeekInfo(resp.atividades, this.dataInicial);
+
+      this.DisplayNone = false;
     });
+  }
+
+  visualizarInfoSemana(semana){
+     this.commonService.setData(semana, this.commonService.weekView_key);
+
+     this.router.navigate(['../week']);
   }
 
   carregarSemanaPorMes(e)
