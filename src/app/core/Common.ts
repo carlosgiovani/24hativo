@@ -5,11 +5,21 @@ export class CommonService implements OnInit  {
     public weekView_key = 'weekView_key';
     private weekInfo_key = 'weekInfo_key';
     private monthInfo_key = 'monthInfo_key';
+    private startIndexEventDate_key = 'startEventDate_kye';    
+
     private meses = [ "Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
-    private dias = ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'];
+    public dias = ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'];
 
     ngOnInit() {
 
+    }
+
+    public getIndextStartEventDate(){
+        var retrievedObject = localStorage.getItem(this.startIndexEventDate_key);
+
+        if(retrievedObject) {
+            return JSON.parse(retrievedObject);
+        }
     }
 
     public getMonthsEvent(startEventDate)
@@ -61,9 +71,13 @@ export class CommonService implements OnInit  {
         return this.getWeekEvent(atividades, dataInicio);
     }
 
+    
     getWeekEvent(atividades, dataInicio){
         
         let dataInicioParametro = this.addDays(dataInicio,0);
+
+
+        this.setData(dataInicioParametro.getDay(), this.startIndexEventDate_key);
 
         let semana01 = this.addDays(dataInicio,6);
         let semana02 = this.addDays(semana01,6);
@@ -102,10 +116,26 @@ export class CommonService implements OnInit  {
 
         let weeks = 
         [
-            { Titulo: 'Semana ' + semanaAtual01, InfoSemana: this.buscarDadosPorSemana(atividades, semanaAtual01), Class: (semanaAtiva == semanaAtual01 ? "week-open" : "week-closed") },
-            { Titulo: 'Semana ' + semanaAtual02, InfoSemana: this.buscarDadosPorSemana(atividades, semanaAtual02) , Class: (semanaAtiva == semanaAtual02 ? "week-open" : "week-closed") },
-            { Titulo: 'Semana ' + semanaAtual03, InfoSemana: this.buscarDadosPorSemana(atividades, semanaAtual03),  Class: (semanaAtiva == semanaAtual03 ? "week-open" : "week-closed") },
-            { Titulo: 'Semana ' + semanaAtual04, InfoSemana: this.buscarDadosPorSemana(atividades, semanaAtual04) , Class: (semanaAtiva == semanaAtual04 ? "week-open" : "week-closed") }
+            { 
+                Titulo: 'Semana ' + semanaAtual01,
+                InfoSemana: this.buscarDadosPorSemana(atividades, semanaAtual01), 
+                Class: (semanaAtiva == semanaAtual01 ? "week-open" : "week-closed") 
+            },
+            { 
+                Titulo: 'Semana ' + semanaAtual02, 
+                InfoSemana: this.buscarDadosPorSemana(atividades, semanaAtual02) , 
+                Class: (semanaAtiva == semanaAtual02 ? "week-open" : "week-closed") 
+            },
+            { 
+                Titulo: 'Semana ' + semanaAtual03, 
+                InfoSemana: this.buscarDadosPorSemana(atividades, semanaAtual03),  
+                Class: (semanaAtiva == semanaAtual03 ? "week-open" : "week-closed") 
+            },
+            { 
+                Titulo: 'Semana ' + semanaAtual04, 
+                InfoSemana: this.buscarDadosPorSemana(atividades, semanaAtual04) , 
+                Class: (semanaAtiva == semanaAtual04 ? "week-open" : "week-closed") 
+            }
         ];
 
         localStorage.setItem(this.weekInfo_key, JSON.stringify(weeks));

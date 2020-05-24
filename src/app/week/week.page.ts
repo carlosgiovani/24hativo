@@ -9,54 +9,67 @@ import { CommonService } from '../core/Common';
 export class WeekPage implements OnInit {
   private row: any;
   private data: any;
+  private indexStartWeek = 0;
+  private diaInicioSemana = 1;
 
   constructor(private commonService : CommonService) { }
 
   ngOnInit() {
+    this.indexStartWeek = this.commonService.getIndextStartEventDate();
     this.row = this.commonService.getData(this.commonService.weekView_key);
-    this.carregarInformacoesDiarias();
+    this.diaInicioSemana = (this.row.Titulo.replace('Semana ', '') * 7) - 6;
+    this.CarregarInformacoesDiarias();
   }
 
-  carregarInformacoesDiarias(){
-
-    console.log(this.row);
-
+  CarregarInformacoesDiarias(){
+    
     this.data = 
     [
-      { Titulo: 'Dia 1', InfoDia: this.VerificarSeConcluido(1)  } ,
-      { Titulo: 'Dia 2', InfoDia: this.VerificarSeConcluido(2)  },
-      { Titulo: 'Dia 3', InfoDia: this.VerificarSeConcluido(3)  },
-      { Titulo: 'Dia 4', InfoDia: this.VerificarSeConcluido(4)  },
-      { Titulo: 'Dia 5', InfoDia: this.VerificarSeConcluido(5)  },
-      { Titulo: 'Dia 6', InfoDia: this.VerificarSeConcluido(6)  },
-      { Titulo: 'Dia 7', InfoDia: this.VerificarSeConcluido(7)  }
+      this.CarregarInformacoesDia(1),
+      this.CarregarInformacoesDia(2),
+      this.CarregarInformacoesDia(3),
+      this.CarregarInformacoesDia(4),
+      this.CarregarInformacoesDia(5),
+      this.CarregarInformacoesDia(6),
+      this.CarregarInformacoesDia(7)
     ];
   }
 
-  VerificarSeConcluido(dia) {
+  CarregarInformacoesDia(dia) {
     //day-open | closed | finished
 
-    let cssClass = "day-closed";
-    let concluido = false;
+    if(this.indexStartWeek > 6)
+      this.indexStartWeek = 0;
 
-    let atividade = this.row.InfoSemana.atividades.filter(x => x.dia === dia)[0];
+    const titulo =  this.commonService.dias[this.indexStartWeek] + ' - Dia ' + this.diaInicioSemana ;
+    const atividade = this.row.InfoSemana.atividades.filter(x => x.dia === dia)[0];
 
-    if(this.row.InfoSemana.length === 0 || !atividade)
-      return {
-        Concluido : concluido,
-        Class: cssClass
-      };
+    let result = this.getResul(titulo);
 
-      cssClass = "day-finished";
-      concluido = true;
+    this.indexStartWeek++;
+    this.diaInicioSemana++;
 
-      return {
-        Concluido : concluido,
-        Class: cssClass,
-        tempo: this.commonService.formatarMinutos(atividade.tempo),
-        pontuacao: atividade.pontuacao
-      };
+    if(this.row.InfoSemana.length === 0 || !atividade) { 
+      return result; 
+    }
+      
+    result.Titulo = titulo;
+    result.Concluido = true;
+    result.Class = "day-finished";
+    result.tempo = this.commonService.formatarMinutos(atividade.tempo);
+    result.pontuacao = atividade.pontuacao;
+
+    return result;
 
     };
 
+    getResul(titulo){
+      return {
+        Concluido : false,
+        Class: "day-closed",
+        Titulo: titulo,
+        tempo: '00:00',
+        pontuacao: 0
+      };
+    }
 }

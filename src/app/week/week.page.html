@@ -29,7 +29,7 @@
       
     </ion-row>
     <ion-row class="ion-margin-bottom" *ngFor="let dia of data">
-      <ion-col class="{{dia?.InfoDia.Class}}" *ngIf="!dia?.InfoDia.Concluido">
+      <ion-col class="{{dia.Class}}" *ngIf="!dia.Concluido">
         <ion-row>
           <ion-text>{{dia.Titulo}}</ion-text>
         </ion-row>
@@ -51,7 +51,7 @@
           </ion-row>
         </ion-row>
       </ion-col>
-      <ion-col  [routerLink]="['../day']" class="{{dia?.InfoDia.Class}}" *ngIf="dia?.InfoDia.Concluido">
+      <ion-col  [routerLink]="['../day']" class="{{dia.Class}}" *ngIf="dia.Concluido">
         <ion-row>
           <ion-text>{{dia.Titulo}}</ion-text>
         </ion-row>
@@ -63,7 +63,7 @@
                   <img src="../../assets/images/relogio.svg">
                 </div>
                 <div class="tempo-tempo">
-                  {{dia.InfoDia.tempo}}
+                  {{dia.tempo}}
                 </div>
               </div>
               <div class="pontos">
@@ -71,7 +71,7 @@
                   <img src="../../assets/images/estrela.svg">
                 </div>
                 <div class="pontos-valor">
-                  {{dia.InfoDia.pontuacao}}
+                  {{dia.pontuacao}}
                 </div>
               </div>
             </div>
