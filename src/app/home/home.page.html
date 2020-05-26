@@ -15,11 +15,11 @@
       </ion-text>
     </ion-row>
     <ion-row class="ion-margin-bottom">
-      <select class="select-mes" (change)="carregarSemanaPorMes($event)">
+      <select class="select-mes" (change)="CarregarAtividades($event)">
         <option 
-          *ngFor="let mes of meses" 
-          selected ="{{mes.CurrentMonth}}"
-          value="{{mes.Value}}">{{mes.Description}}
+          *ngFor="let periodo of periodos" 
+          selected ="{{periodo.Selected}}"
+          value="{{periodo.Value}}">{{periodo.Titulo}}
         </option>
       </select>
     </ion-row>
@@ -51,7 +51,7 @@
     </div>
     <div *ngIf="!DisplayNone">
       <ion-row class="ion-margin-bottom" *ngFor="let semana of semanas" >
-        <ion-col class="{{semana.Class}}" (click)="visualizarInfoSemana(semana)" *ngIf="!semana?.InfoSemana.concluida">
+        <ion-col class="{{semana.Class}}" (click)="VisualizarInfoSemana(semana)" *ngIf="!semana.Concluida">
           <ion-row>
             <ion-text>{{semana.Titulo}}</ion-text>
           </ion-row>
@@ -74,7 +74,7 @@
           </ion-row>
         </ion-col>
 
-        <ion-col class="week-finished" (click)="visualizarInfoSemana(semana)"  *ngIf="semana?.InfoSemana.concluida">
+        <ion-col class="week-finished" (click)="VisualizarInfoSemana(semana)"  *ngIf="semana.Concluida">
           <ion-row>
             <ion-text>{{semana.Titulo}}</ion-text>
           </ion-row>
@@ -86,7 +86,7 @@
                     <img src="../../assets/images/relogio.svg">
                   </div>
                   <div class="tempo-tempo">
-                    {{semana?.InfoSemana?.tempo}}
+                    {{semana.Tempo}}
                   </div>
                 </div>
                 <div class="pontos">
@@ -94,7 +94,7 @@
                     <img src="../../assets/images/estrela.svg">
                   </div>
                   <div class="pontos-valor">
-                    {{semana?.InfoSemana?.pontuacao}}
+                    {{semana.Pontuacao}}
                   </div>
                 </div>
               </div>
