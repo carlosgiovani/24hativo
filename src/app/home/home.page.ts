@@ -15,13 +15,13 @@ export class HomePage implements OnInit {
 
   private atividadeInicial = false;
   private dataInicial:any;
-  private periodos: any;
-  private semanas:any;
+  periodos: any;
+  semanas:any;
   private rows: any;
   private registros: any;
   private EventoPadrao;
-  private dotsCount = [0,1,2,3];
-  private DisplayNone = true;
+  dotsCount = [0,1,2,3];
+  DisplayNone = true;
   private Helper;
 
   constructor(

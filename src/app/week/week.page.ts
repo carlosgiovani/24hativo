@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class WeekPage implements OnInit {
   private row: any;
-  private data: any;
+  data: any;
   private indexStartWeek = 0;
   private diaInicioSemana = 1;
 
