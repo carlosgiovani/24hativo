@@ -114,7 +114,7 @@ export class HomePage implements OnInit {
             dia.Pontuacao = atividadeDia.pontuacao;
             dia.Observacao = atividadeDia.observacao;
             dia.MensagemPontuacao = atividadeDia.pontuacao_mensagem;
-            dia.SituacaoPosAtividade = 4; // terminar (smiles)
+            dia.Esforco = atividadeDia.esforco;
           }        
         }      
 

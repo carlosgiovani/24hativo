@@ -96,24 +96,24 @@ export class DayPage implements OnInit {
     }
   }
 
+  ngOnInit() {
+    this.row = this.commonService.getData(this.commonService.DAY_VIEW_KEY);
+  }
+
   async presentModal() {
+ 
     const modal = await this.modalController.create({
       component: ModalPage
     });
+
+    modal.onDidDismiss().then( result => {
+      if (result) {
+        if (result.data) {
+          console.log(result.data);
+        }
+      }
+    });
     return await modal.present();
   }
-
-  ngOnInit() {
-
-    this.row = this.commonService.getData(this.commonService.DAY_VIEW_KEY);
-
-    this.CarregarInformacoesDia();
-  }
-
-  CarregarInformacoesDia() {
-
-    //console.log(this.row);
-  }
-
 
 }

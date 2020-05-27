@@ -17,20 +17,20 @@
     </h1>
   </ion-row>
   <ion-row class="icons-status ion-justify-content-between">
-    <img src="../../../assets/icon/emoji.svg" class="selected">
-    <img src="../../../assets/icon/emoji (1).svg">
-    <img src="../../../assets/icon/sad.svg">
-    <img src="../../../assets/icon/emoji (2).svg">
+    <img src="../../../assets/icon/emoji.svg" class="{{Otimo}}" (click)="SelecionarSituacao(1)" >
+    <img src="../../../assets/icon/emoji (1).svg" class="{{Bom}}" (click)="SelecionarSituacao(2)" >
+    <img src="../../../assets/icon/sad.svg" class="{{Ruim}}" (click)="SelecionarSituacao(3)" >
+    <img src="../../../assets/icon/emoji (2).svg" class="{{Pessimo}}" (click)="SelecionarSituacao(4)" >
   </ion-row>
   <ion-row>
     Anotações
   </ion-row>
   <ion-row>
-    <ion-textarea type="text" rows="7" cols="35"></ion-textarea>
+    <ion-textarea type="text" rows="7" cols="35" [(ngModel)]="observacao"></ion-textarea>
   </ion-row>
   <ion-row>
     <div class="btn-save">
-      <ion-icon name="save-outline"></ion-icon>
+      <ion-icon name="save-outline" (click)="SalvarAtividade()" ></ion-icon>
     </div>
   </ion-row>
 </ion-content>
