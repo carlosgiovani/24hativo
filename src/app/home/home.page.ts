@@ -80,10 +80,10 @@ export class HomePage implements OnInit {
   }
 
   VisualizarInfoSemana(semana){
-    console.log(semana);
-    this.commonService.setData(semana, this.commonService.weekView_key);
-
-     this.router.navigate(['../week']);
+    if(semana.Concluida || semana.Desbloqueada()) {
+      this.commonService.setData(semana, this.commonService.weekView_key);
+      this.router.navigate(['../week']);
+    }
   }
 
   CarregarAtividades(e)
@@ -94,12 +94,13 @@ export class HomePage implements OnInit {
     let periodoAtual = this.EventoPadrao.Periodos.filter(x => x.Periodo == Number.parseInt(periodoAtivo))[0];
 
     periodoAtual.Semanas.forEach(semana => {
+
       let atividadesSemana = this.registros.atividades.filter( x => x.semana == semana.Numero)
       let tempoTotal = 0;
 
-      if(atividadesSemana.length != 0) {
+      semana.Dias.forEach(dia => {
 
-        semana.Dias.forEach(dia => {
+        if(atividadesSemana.length != 0) {
 
           let atividadeDia = this.registros.atividades.filter( x => x.semana == semana.Numero && x.dia === dia.Numero)[0];
 
@@ -107,25 +108,29 @@ export class HomePage implements OnInit {
             tempoTotal += atividadeDia.tempo;
             semana.Tempo +=  atividadeDia.tempo;
             semana.Pontuacao += atividadeDia.pontuacao;
-
-            ////day-open | closed | finished
-
-            dia.Tempo = atividadeDia.tempo;
-            dia.Concluido = atividadeDia.concluido;
-            dia.Class = atividadeDia.Data < dataReferencia ? 'day-closed' : atividadeDia.concluido ? 'day-finished' : 'day-open';
+  
+            //day-open | closed | finished  
+            dia.Tempo = atividadeDia.tempo; 
             dia.Pontuacao = atividadeDia.pontuacao;
+            dia.Observacao = atividadeDia.observacao;
+            dia.MensagemPontuacao = atividadeDia.pontuacao_mensagem;
+            dia.SituacaoPosAtividade = 4; // terminar (smiles)
+          }        
+        }      
 
-            console.log(dia.Data);
-            console.log(dataReferencia);
-            console.log(atividadeDia.Data < dataReferencia ? 'day-closed' : atividadeDia.concluido ? 'day-finished' : 'day-open');
-          }
+        dia.Concluido = this.registros.atividades.filter(x => x.semana == semana.Numero && x.dia == dia.Numero).length == 1;
+        dia.Class = dia.Data <= dataReferencia ? 'day-open' : 'day-closed';
+        dia.Desbloqueado = dia.Data <= dataReferencia;
 
-        });
+      });
 
-        semana.Tempo = this.commonService.formatarMinutos(tempoTotal);
-        semana.Concluida = this.registros.atividades.filter( x => x.semana == semana.Numero).length == 7;
-        semana.Class = semana.concluido ? 'week-finished' : semana.DataInicio >= dataReferencia ? 'week-open' : 'week-closed';
-      }
+      semana.Tempo = this.commonService.formatarMinutos(tempoTotal);
+      semana.Concluida = this.registros.atividades.filter( x => x.semana == semana.Numero).length == 7;      
+      semana.Class = semana.DataInicio <= dataReferencia ? 'week-open' : 'week-closed';
+
+      semana.Desbloqueada = function(){
+        return semana.Class === 'week-open';
+      };
     });
 
     this.semanas = periodoAtual.Semanas;

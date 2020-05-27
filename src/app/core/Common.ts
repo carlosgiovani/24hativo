@@ -3,12 +3,10 @@ import { Injectable, OnInit } from "@angular/core";
 @Injectable({ providedIn: 'root' })
 export class CommonService implements OnInit  { 
     public weekView_key = 'weekView_key';
-    private weekInfo_key = 'weekInfo_key';
-    private monthInfo_key = 'monthInfo_key';
+    public DAY_VIEW_KEY = 'DAY_VIEW_KEY';
     private startIndexEventDate_key = 'startEventDate_key';    
-    private dataInicioEvento_key = "dataInicioEvento_key";
 
-    private meses = [ "Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+    //private meses = [ "Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
     public dias = ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'];
 
     ngOnInit() {
@@ -45,20 +43,25 @@ export class CommonService implements OnInit  {
                 Semanas: []
             };
 
-            for(let s=0; s < 4; s++) {    
+            let dataInicioSemana = periodo.DataInicio;
+
+            for(let s=0; s < 4; s++) { 
+
                 var semana = { 
                     Titulo: 'Semana ' + nroSemana,
                     Numero: nroSemana, 
                     Concluida: false,
                     Class: 'week-closed',
+                    DataInicio: dataInicioSemana,
                     Pontuacao: 0,
                     Tempo: 0,
                     Dias: [] 
                 };
+                
+                dataInicioSemana = this.addDays(dataInicioSemana, 6);
 
                 for(let d=0; d < 7; d++) { 
-                    //let data = this.addDays(dataInicial, nroDia -1);
-
+                    let data = this.addDays(dataInicial, nroDia -1);
                     var dia =  {
                         Titulo: 'Dia ' + nroDia,
                         Concluido: false,

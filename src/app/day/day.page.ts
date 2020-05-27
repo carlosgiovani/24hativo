@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, NavController, Platform, ModalController } from '@ionic/angular';
 import { ModalPage } from '../components/modal/modal.page';
+import { CommonService } from '../core/Common';
 
 @Component({
   selector: 'app-day',
@@ -8,6 +9,7 @@ import { ModalPage } from '../components/modal/modal.page';
   styleUrls: ['./day.page.scss'],
 })
 export class DayPage implements OnInit {
+  row: any;
 
   public centesimas = 0;
   public segundos = 0;
@@ -24,7 +26,12 @@ export class DayPage implements OnInit {
   estado = 'play';
   refreshColor = 'light';
 
-  constructor(public navCtrl: NavController, private plt: Platform, alertCtrl: AlertController, public modalController: ModalController) { }
+  constructor(
+    public navCtrl: NavController, 
+    private plt: Platform, 
+    alertCtrl: AlertController, 
+    public modalController: ModalController,
+    private commonService : CommonService) { }
 
   estadoSwap() {
     this.isRun = !this.isRun;
@@ -97,6 +104,16 @@ export class DayPage implements OnInit {
   }
 
   ngOnInit() {
+
+    this.row = this.commonService.getData(this.commonService.DAY_VIEW_KEY);
+
+    this.CarregarInformacoesDia();
   }
+
+  CarregarInformacoesDia() {
+
+    //console.log(this.row);
+  }
+
 
 }

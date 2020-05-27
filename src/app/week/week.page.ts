@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../core/Common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-week',
@@ -12,7 +13,9 @@ export class WeekPage implements OnInit {
   private indexStartWeek = 0;
   private diaInicioSemana = 1;
 
-  constructor(private commonService : CommonService) { }
+  constructor(
+    private router: Router,
+    private commonService : CommonService) { }
 
   ngOnInit() {
     this.Inicializar();
@@ -27,5 +30,13 @@ export class WeekPage implements OnInit {
     this.diaInicioSemana = (nroSemana * 7) - 6;
 
     this.data = this.row.Dias;
+  }
+
+  VisualizarInfoDia(dia){
+   
+    if(dia.Concluido || dia.Desbloqueado) {
+      this.commonService.setData(dia, this.commonService.DAY_VIEW_KEY);
+      this.router.navigate(['../day']);
+    }
   }
 }

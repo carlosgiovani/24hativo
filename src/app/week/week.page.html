@@ -29,7 +29,7 @@
       
     </ion-row>
     <ion-row class="ion-margin-bottom" *ngFor="let dia of data">
-      <ion-col class="{{dia.Class}}" *ngIf="!dia.Concluido">
+      <ion-col class="{{dia.Class}}" (click)="VisualizarInfoDia(dia)" *ngIf="!dia.Concluido">
         <ion-row>
           <ion-text>{{dia.Titulo}}</ion-text>
         </ion-row>
@@ -51,7 +51,7 @@
           </ion-row>
         </ion-row>
       </ion-col>
-      <ion-col  [routerLink]="['../day']" class="{{dia.Class}}" *ngIf="dia.Concluido">
+      <ion-col  (click)="VisualizarInfoDia(dia)" class="{{dia.Class}}" *ngIf="dia.Concluido">
         <ion-row>
           <ion-text>{{dia.Titulo}}</ion-text>
         </ion-row>
