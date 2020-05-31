@@ -121,6 +121,7 @@ export class HomePage implements OnInit {
         dia.Concluido = this.registros.atividades.filter(x => x.semana == semana.Numero && x.dia == dia.Numero).length == 1;
         dia.Class = dia.Data <= dataReferencia ? 'day-open' : 'day-closed';
         dia.Desbloqueado = dia.Data <= dataReferencia;
+        dia.TempoAtividade = semana.TempoAtividade;
 
       });
 

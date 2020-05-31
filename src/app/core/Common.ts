@@ -55,6 +55,7 @@ export class CommonService implements OnInit  {
                     DataInicio: dataInicioSemana,
                     Pontuacao: 0,
                     Tempo: 0,
+                    TempoAtividade: 5,
                     Dias: [] 
                 };
                 

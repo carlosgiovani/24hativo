@@ -11,16 +11,16 @@
   <div class="bg-logo ion-padding">
     <ion-row>
       <ion-text>
-        Semana 1 de Janeiro
+        {{row.Titulo}}
       </ion-text>
     </ion-row>
     <ion-row class="ion-margin-bottom">
-      <h1 class="titulo">Terça</h1>
+      <h1 class="titulo" id="counter"></h1>
     </ion-row>
     <div *ngIf="!row.Concluido">
     <ion-row>
       <ion-text>
-        Começar atividade
+        Tempo de atividade: {{TempoAtividadePadrao}} minuto(s) - Iniciar
       </ion-text>
     </ion-row>
     <ion-row class="ion-justify-content-center ion-margin-bottom">
@@ -40,7 +40,7 @@
       <div class="btn-refresh" (click)="stop()">
         <ion-icon  name="refresh"></ion-icon>
       </div>
-      <div class="btn-save" (click)="presentModal()">
+      <div class="btn-save" (click)="presentModal()" *ngIf="concluido">
         <ion-icon name="save-outline"></ion-icon>
       </div>
     </ion-row>

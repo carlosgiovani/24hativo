@@ -23,7 +23,7 @@ export class ApiService {
     }
 
     cadastrarAtividade(atividade){   
-        return this.httpClient.post(this.API_URL + '/atleta/login?email=', 
+        return this.httpClient.post(this.API_URL + '/atividade', 
         {
             "atleta": {
                 "_id": atividade.id_atleta
@@ -31,7 +31,7 @@ export class ApiService {
             "evento": {
                 "_id": atividade.id_evento
               },
-              "semana": atividade.sena,
+              "semana": atividade.semana,
               "dia": atividade.dia,
               "tempo": atividade.tempo,
               "concluido": atividade.concluido,
