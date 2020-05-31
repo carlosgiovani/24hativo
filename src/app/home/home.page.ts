@@ -23,6 +23,8 @@ export class HomePage implements OnInit {
   dotsCount = [0,1,2,3];
   DisplayNone = true;
   private Helper;
+  id_atleta;
+  id_evento;
 
   constructor(
     private router: Router,
@@ -47,8 +49,12 @@ export class HomePage implements OnInit {
     });
   }
 
-  BuscarAtividades(id_atleta, id_evento){
-    this.apiService.buscarAtividadesPorEventoAtleta(id_atleta, id_evento).subscribe(resp => {
+  BuscarAtividades(user, id_evento){
+
+    this.id_atleta = user._id;
+    this.id_evento = id_evento;
+
+    this.apiService.buscarAtividadesPorEventoAtleta(user, id_evento).subscribe(resp => {
 
       const helper = this.commonService;
 
@@ -104,7 +110,7 @@ export class HomePage implements OnInit {
 
           let atividadeDia = this.registros.atividades.filter( x => x.semana == semana.Numero && x.dia === dia.Numero)[0];
 
-          if(atividadeDia.length != 0) { 
+          if(atividadeDia) {
             tempoTotal += atividadeDia.tempo;
             semana.Tempo +=  atividadeDia.tempo;
             semana.Pontuacao += atividadeDia.pontuacao;
@@ -115,13 +121,16 @@ export class HomePage implements OnInit {
             dia.Observacao = atividadeDia.observacao;
             dia.MensagemPontuacao = atividadeDia.pontuacao_mensagem;
             dia.Esforco = atividadeDia.esforco;
+            dia.Concluido = atividadeDia.concluido;
           }        
         }      
-
-        dia.Concluido = this.registros.atividades.filter(x => x.semana == semana.Numero && x.dia == dia.Numero).length == 1;
+        
         dia.Class = dia.Data <= dataReferencia ? 'day-open' : 'day-closed';
         dia.Desbloqueado = dia.Data <= dataReferencia;
         dia.TempoAtividade = semana.TempoAtividade;
+        
+        dia.Id_atleta = this.id_atleta;
+        dia.Id_evento = this.id_evento;
 
       });
 

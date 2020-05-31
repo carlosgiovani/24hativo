@@ -3,6 +3,7 @@ import { AlertController, NavController, Platform, ModalController } from '@ioni
 import { ModalPage } from '../components/modal/modal.page';
 import { CommonService } from '../core/Common';
 import { IfStmt } from '@angular/compiler';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-day',
@@ -30,6 +31,7 @@ export class DayPage implements OnInit {
   refreshColor = 'light';
 
   constructor(
+    private router: Router,
     public navCtrl: NavController,
     private plt: Platform,
     alertCtrl: AlertController,
@@ -80,6 +82,7 @@ export class DayPage implements OnInit {
       if (this.minutos == this.TempoAtividadePadrao) {
         atividadeConcluida = true;
         this.concluido = true;
+        this.Centesimas = '00';
       }
     }, 100);
   }
@@ -120,11 +123,16 @@ export class DayPage implements OnInit {
     });
 
     modal.onDidDismiss().then(result => {
+
       if (result) {
         if (result.data) {
-          console.log(result.data);
+          // this.row.Concluido = result.data.concluido;
+          // this.row.Observacao = result.data.observacao;
+          // this.row.MensagemPontuacao = result.data.pontuacao_mensagem;
+          // this.row.Esforco = result.data.esforco;
         }
       }
+
     });
     return await modal.present();
   }
